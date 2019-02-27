@@ -22,17 +22,9 @@ public class CSVTable {
 	private TreeMap<String, Integer> keyIndexMap;
 
 	public CSVTable(String fileName) {
-		keyIndexMap = new TreeMap<String, Integer>();
+		keyIndexMap = new TreeMap<>();
 
 		parseString(readFile(fileName));
-	}
-
-	public int getKeyIndex(String key) {
-		try {
-			return keyIndexMap.get(key);			
-		} catch (NullPointerException err) {
-			return -1;
-		}
 	}
 	
 	public Row getRow(int index) {
@@ -53,6 +45,14 @@ public class CSVTable {
 		}
 		
 		return null;
+	}
+
+	private int getKeyIndex(String key) {
+		try {
+			return keyIndexMap.get(key);
+		} catch (NullPointerException err) {
+			return -1;
+		}
 	}
 	
 	private String readFile(String fileName) {
